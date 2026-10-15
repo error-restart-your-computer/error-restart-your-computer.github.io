@@ -12,17 +12,19 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: #0f0f0f;
       color: #e0e0e0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
+      line-height: 1.6;
     }
 
-    .container {
-      text-align: center;
-      max-width: 600px;
+    a { color: #667eea; }
+
+    .wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
     }
+
+    /* Hero */
+    header { text-align: center; padding: 3rem 0 2.5rem; }
 
     h1 {
       font-size: clamp(2rem, 8vw, 3rem);
@@ -33,74 +35,321 @@
       -webkit-text-fill-color: transparent;
     }
 
-    p {
-      font-size: 1.1rem;
-      color: #a0a0a0;
-      margin-bottom: 2rem;
+    .tagline { color: #a0a0a0; font-size: 1.1rem; }
+
+    /* Sections */
+    section { margin-bottom: 2.5rem; }
+
+    h2 {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #262626;
     }
 
+    p { color: #b5b5b5; margin-bottom: 0.8rem; }
+
+    ul { list-style: none; }
+
+    li {
+      color: #b5b5b5;
+      padding: 0.3rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: 700;
+    }
+
+    /* Project cards */
+    .card {
+      border: 1px solid #262626;
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .card:hover { border-color: #3a3a4a; }
+
+    .card h3 { font-size: 1.05rem; color: #fff; margin-bottom: 0.15rem; }
+
+    .card h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .card h3 a:hover { color: #667eea; }
+
+    .card h3 a:focus-visible {
+      outline: 2px solid #667eea;
+      outline-offset: 2px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #667eea;
+      border: 1px solid #667eea;
+      border-radius: 999px;
+      padding: 0.05rem 0.6rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #262626;
+      margin-top: 0.75rem;
+      display: block;
+    }
+
+    figcaption { font-size: 0.8rem; color: #6f6f83; margin-top: 0.4rem; }
+
+    /* Language chips */
+    .chip {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #b5b5b5;
+      border: 1px solid #3a3a4a;
+      border-radius: 999px;
+      padding: 0.1rem 0.7rem;
+      margin: 0.15rem 0.25rem;
+    }
+
+    /* Links row */
     .links {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       justify-content: center;
+      margin-top: 1rem;
     }
 
-    .links a,
-    .links button {
-      font: inherit;
+    .links a {
       color: #667eea;
-      background: none;
       border: 1px solid #667eea;
       border-radius: 6px;
       padding: 0.5rem 1.2rem;
-      cursor: pointer;
       text-decoration: none;
       transition: background 0.2s;
     }
 
-    .links a:hover,
-    .links button:hover {
-      background: #667eea;
-      color: #fff;
+    .links a:hover { background: #667eea; color: #fff; }
+
+    /* Restart easter egg overlay */
+    #restarting {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: #0f0f0f;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      text-align: center;
     }
 
-    #hint {
-      display: block;
-      margin-top: 1rem;
+    #restarting.show { display: flex; }
+
+    .spinner {
+      width: 42px;
+      height: 42px;
+      border: 4px solid #262626;
+      border-top-color: #667eea;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #restarting p { color: #a0a0a0; }
+    #restarting .cancel { font-size: 0.8rem; color: #555; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: #666;
       font-size: 0.85rem;
-      color: #3ecf8e;
-      min-height: 1.2em;
+      border-top: 1px solid #262626;
+      padding-top: 1.5rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hello, World</h1>
-    <p>Welcome to my little corner of the internet.</p>
+  <div class="wrap">
+    <header>
+      <h1>Hello, World</h1>
+      <p class="tagline">Welcome to my little corner of the internet.</p>
+    </header>
 
-    <div class="links">
-      <a href="https://github.com/error-restart-your-computer" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <button type="button" id="discord">Discord</button>
-    </div>
+    <section>
+      <h2>About</h2>
+      <p>
+        I'm <strong>error_restart_your_computer</strong> — I like computers,
+        code, and figuring out how things work (usually by breaking them first).
+      </p>
+    </section>
 
-    <span id="hint" role="status" aria-live="polite"></span>
+    <section>
+      <h2>Working on</h2>
+      <ul>
+        <li>Chess — polishing the built-in AI and watch-mode move grading</li>
+        <li>SATISFY — new worlds and tiny details for the terminal toybox</li>
+        <li>This website</li>
+        <li>Learning C#, Rust and assembly</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Languages</h2>
+      <p><strong>I code in:</strong>
+        <span class="chip">Java</span>
+        <span class="chip">Python</span>
+        <span class="chip">HTML</span>
+      </p>
+      <p><strong>Learning:</strong>
+        <span class="chip learning">C++</span>
+        <span class="chip learning">C#</span>
+        <span class="chip learning">Rust</span>
+        <span class="chip learning">Assembly</span>
+      </p>
+    </section>
+
+    <section>
+      <h2>Things I'm into</h2>
+      <ul>
+        <li>Building and tinkering with websites</li>
+        <li>Linux and open source</li>
+        <li>Games, tech, and random side projects</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+
+      <article class="card">
+        <h3><a href="https://github.com/error-restart-your-computer/chess-app" target="_blank" rel="noopener noreferrer">Chess</a> <span class="badge">C++ / SDL2</span></h3>
+        <p>
+          A complete two-player chess game with an optional built-in AI,
+          rendered with SDL2. Full rules — castling, en passant, promotion,
+          threefold repetition, the 50-move rule — plus a SAN move list,
+          legal-move hints, a capture tray with material advantage, and
+          Stockfish support when it's available.
+        </p>
+        <p>
+          Watch mode lets two engines battle it out while every move is graded
+          lichess-style (miss, good, brilliant…).
+        </p>
+        <figure>
+          <img src="chess.png" alt="Screenshot of the chess game showing the board and move list" loading="lazy">
+          <figcaption>The board in play.</figcaption>
+        </figure>
+        <figure>
+          <img src="chess-brilliant.png" alt="Screenshot of watch mode grading a queen sacrifice as brilliant" loading="lazy">
+          <figcaption>Watch mode grading a queen sacrifice as Brilliant!</figcaption>
+        </figure>
+      </article>
+
+      <article class="card">
+        <h3><a href="https://github.com/error-restart-your-computer/Satisfy" target="_blank" rel="noopener noreferrer">SATISFY</a> <span class="badge">C++17</span></h3>
+        <p>
+          A satisfying terminal toybox in a single C++ file — no dependencies
+          beyond a POSIX terminal and <code>g++</code>. Nine little worlds with
+          true colour and mouse support: falling sand with 15 reacting
+          materials, Game of Life, a real water-ripple simulation, particles,
+          fireworks, boids, plasma, glyph rain, and a zen mode.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3><a href="https://github.com/error-restart-your-computer/Password-Generator" target="_blank" rel="noopener noreferrer">Password Generator</a> <span class="badge">Python</span></h3>
+        <p>
+          A tiny script that generates strong random passwords with Python's
+          <code>secrets</code> module — guaranteeing at least one lowercase
+          letter, uppercase letter, digit, and symbol.
+        </p>
+      </article>
+    </section>
+
+    <section>
+      <h2>Find me</h2>
+      <div class="links">
+        <a href="https://error.is-a.dev" target="_blank" rel="noopener noreferrer">error.is-a.dev</a>
+        <a href="https://github.com/error-restart-your-computer" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://discordapp.com/users/1305891894106128464" target="_blank" rel="noopener noreferrer">Discord</a>
+      </div>
+    </section>
+
+    <footer>© <span id="year"></span> error_restart_your_computer</footer>
+  </div>
+
+  <div id="restarting" aria-hidden="true">
+    <div class="spinner"></div>
+    <p>Restarting your computer…</p>
+    <p class="cancel">(just kidding — the website. press Esc to cancel)</p>
   </div>
 
   <script>
-    var hint = document.getElementById('hint');
-    document.getElementById('discord').addEventListener('click', function () {
-      var name = 'error_restart_your_computer';
-      var done = function () {
-        hint.textContent = 'Copied ' + name;
-        setTimeout(function () { hint.textContent = ''; }, 2000);
-      };
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(name).then(done);
-      } else {
-        done();
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* Console easter egg for curious visitors */
+    console.log(
+      '%c███████╗███████╗██████╗ ███╗   ██╗\n' +
+      '██╔════╝██╔════╝██╔══██╗████╗  ██║\n' +
+      '█████╗  █████╗  ██████╔╝██╔██╗ ██║\n' +
+      '██╔══╝  ██╔══╝  ██╔══██╗██║╚██╗██║\n' +
+      '██║     ███████╗██║  ██║██║ ╚████║\n' +
+      '╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝\n\n' +
+      'Thanks for poking around in here :)',
+      'color: #667eea; font-family: monospace; font-weight: bold; line-height: 1.1;'
+    );
+    console.log(
+      '%cTip: this site was hand-made with HTML, CSS and a little JS — no frameworks.',
+      'color: #764ba2;'
+    );
+
+    /* Easter egg: type "restart" anywhere to restart the page */
+    (function () {
+      var word = 'restart';
+      var buffer = '';
+      var overlay = document.getElementById('restarting');
+      var busy = false;
+      var timer;
+
+      document.addEventListener('keydown', function (e) {
+        if (busy) {
+          if (e.key === 'Escape') cancel();
+          return;
+        }
+        if (e.key.length !== 1) return;
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        buffer = (buffer + e.key.toLowerCase()).slice(-word.length);
+        if (buffer === word) {
+          buffer = '';
+          busy = true;
+          overlay.classList.add('show');
+          overlay.setAttribute('aria-hidden', 'false');
+          timer = setTimeout(function () { location.reload(); }, 2500);
+        }
+      });
+
+      function cancel() {
+        clearTimeout(timer);
+        busy = false;
+        overlay.classList.remove('show');
+        overlay.setAttribute('aria-hidden', 'true');
       }
-    });
+    })();
   </script>
 </body>
 </html>
